@@ -35,6 +35,6 @@
   },
   "devDependencies": {
     "ava": "0.0.4",
-    "noop-process": "^1.0.1"
+    "noop-process": "^2.0.0"
   }
 }

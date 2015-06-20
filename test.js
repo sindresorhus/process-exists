@@ -18,13 +18,13 @@ test('pid', function (t) {
 });
 
 test('title', function (t) {
-	t.plan(4);
+	t.plan(5);
 
 	var title = 'pe-test';
 
-	noopProcess({title: title});
+	noopProcess({title: title}, function (err) {
+		t.assert(!err, err);
 
-	setTimeout(function () {
 		processExists(title, function (err, exists) {
 			t.assert(!err, err);
 			t.assert(exists);
@@ -34,6 +34,5 @@ test('title', function (t) {
 			t.assert(!err, err);
 			t.assert(!exists);
 		});
-	// TODO: figure out why this is needed on Linux
-	}, 500);
+	});
 });
