@@ -1,0 +1,40 @@
+{
+  "name": "process-exists",
+  "version": "0.0.0",
+  "description": "Check if a process is running",
+  "license": "MIT",
+  "repository": "sindresorhus/process-exists",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "process",
+    "proc",
+    "ps",
+    "proc",
+    "pid",
+    "test",
+    "testing",
+    "exists",
+    "running",
+    "check"
+  ],
+  "dependencies": {
+    "ps-list": "^2.0.0"
+  },
+  "devDependencies": {
+    "ava": "0.0.4",
+    "noop-process": "^1.0.1"
+  }
+}
