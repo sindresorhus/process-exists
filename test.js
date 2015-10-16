@@ -1,33 +1,18 @@
-'use strict';
-var test = require('ava');
-var noopProcess = require('noop-process');
-var pify = require('pify');
-var processExists = require('./');
+import test from 'ava';
+import noopProcess from 'noop-process';
+import pify from 'pify';
+import fn from './';
 
-test('pid', function (t) {
-	t.plan(2);
-
-	processExists(process.pid).then(function (exists) {
-		t.assert(exists);
-	});
-
-	processExists(345234531).then(function (exists) {
-		t.assert(!exists);
-	});
+test('pid', async t => {
+	t.true(await fn(process.pid));
+	t.false(await fn(345234531));
 });
 
-test('title', function (t) {
-	t.plan(2);
+test('title', async t => {
+	const title = 'pe-test';
 
-	var title = 'pe-test';
+	await pify(noopProcess)({title: title});
 
-	pify(noopProcess)({title: title}).then(function () {
-		processExists(title).then(function (exists) {
-			t.assert(exists);
-		});
-
-		processExists('pe-unicorn').then(function (exists) {
-			t.assert(!exists);
-		});
-	});
+	t.true(await fn(title));
+	t.false(await fn('pe-unicorn'));
 });
