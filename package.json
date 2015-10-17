@@ -1,6 +1,6 @@
 {
   "name": "process-exists",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Check if a process is running",
   "license": "MIT",
   "repository": "sindresorhus/process-exists",
