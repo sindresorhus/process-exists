@@ -26,7 +26,7 @@ processExists(process.pid).then(exists => {
 
 ### processExists(input)
 
-Returns a promise that resolves to a `boolean`.
+Returns a promise for a `boolean`.
 
 #### input
 
