@@ -13,9 +13,9 @@ $ npm install --save process-exists
 ## Usage
 
 ```js
-var processExists = require('process-exists');
+const processExists = require('process-exists');
 
-processExists(process.pid, function (err, exists) {
+processExists(process.pid).then(exists => {
 	console.log(exists);
 	//=> true
 });
@@ -24,17 +24,15 @@ processExists(process.pid, function (err, exists) {
 
 ## API
 
-### processExists(input, callback)
+### processExists(input)
+
+Returns a promise that resolves to a `boolean`.
 
 #### input
 
 Type: `number`, `string`
 
 Process ID/name to check.
-
-#### callback(error, exists)
-
-Type: `function`
 
 
 ## License

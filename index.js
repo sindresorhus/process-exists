@@ -1,7 +1,9 @@
 'use strict';
 var psList = require('ps-list');
+var pify = require('pify');
+var Promise = require('pinkie-promise');
 
-module.exports = function (proc, cb) {
+module.exports = function (proc) {
 	var fn = function (x) {
 		return x.pid === proc;
 	};
@@ -12,12 +14,7 @@ module.exports = function (proc, cb) {
 		};
 	}
 
-	psList(function (err, list) {
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		cb(null, list.some(fn));
+	return pify(psList, Promise)().then(function (list) {
+		return list.some(fn);
 	});
 };
