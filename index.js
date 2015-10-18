@@ -1,7 +1,5 @@
 'use strict';
 var psList = require('ps-list');
-var pify = require('pify');
-var Promise = require('pinkie-promise');
 
 module.exports = function (proc) {
 	var fn = function (x) {
@@ -14,7 +12,7 @@ module.exports = function (proc) {
 		};
 	}
 
-	return pify(psList, Promise)().then(function (list) {
+	return psList().then(function (list) {
 		return list.some(fn);
 	});
 };
