@@ -12,6 +12,6 @@ test('title', async t => {
 
 	await noopProcess({title: title});
 
-	//t.true(await fn(title));
+	t.true(await fn(title));
 	t.false(await fn('pe-unicorn'));
 });

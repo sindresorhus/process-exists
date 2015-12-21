@@ -37,10 +37,5 @@
     "ava": "*",
     "noop-process": "^3.0.0",
     "xo": "*"
-  },
-  "xo": {
-    "ignores": [
-      "test.js"
-    ]
   }
 }
