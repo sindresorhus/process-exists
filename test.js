@@ -1,17 +1,17 @@
 import test from 'ava';
 import noopProcess from 'noop-process';
-import fn from './';
+import m from '.';
 
 test('pid', async t => {
-	t.true(await fn(process.pid));
-	t.false(await fn(345234531));
+	t.true(await m(process.pid));
+	t.false(await m(345234531));
 });
 
 test('title', async t => {
 	const title = 'pe-test';
 
-	await noopProcess({title: title});
+	await noopProcess({title});
 
-	t.true(await fn(title));
-	t.false(await fn('pe-unicorn'));
+	t.true(await m(title));
+	t.false(await m('pe-unicorn'));
 });

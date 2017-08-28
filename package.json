@@ -1,41 +1,41 @@
 {
-  "name": "process-exists",
-  "version": "2.1.0",
-  "description": "Check if a process is running",
-  "license": "MIT",
-  "repository": "sindresorhus/process-exists",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "scripts": {
-    "test": "xo && ava"
-  },
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "process",
-    "proc",
-    "ps",
-    "proc",
-    "pid",
-    "test",
-    "testing",
-    "exists",
-    "running",
-    "check"
-  ],
-  "dependencies": {
-    "ps-list": "^4.0.0"
-  },
-  "devDependencies": {
-    "ava": "*",
-    "noop-process": "^3.0.0",
-    "xo": "*"
-  }
+	"name": "process-exists",
+	"version": "2.1.0",
+	"description": "Check if a process is running",
+	"license": "MIT",
+	"repository": "sindresorhus/process-exists",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"process",
+		"processes",
+		"proc",
+		"ps",
+		"pid",
+		"test",
+		"testing",
+		"exists",
+		"running",
+		"check"
+	],
+	"dependencies": {
+		"ps-list": "^4.0.0"
+	},
+	"devDependencies": {
+		"ava": "*",
+		"noop-process": "^3.0.0",
+		"xo": "*"
+	}
 }

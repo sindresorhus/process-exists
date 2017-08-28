@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save process-exists
+$ npm install process-exists
 ```
 
 
@@ -26,15 +26,15 @@ processExists(process.pid).then(exists => {
 
 ### processExists(input)
 
-Returns a promise for a `boolean`.
+Returns a `Promise<boolean>`.
 
 #### input
 
-Type: `number`, `string`
+Type: `number` `string`
 
-Process ID/name to check.
+Process ID or name to check.
 
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

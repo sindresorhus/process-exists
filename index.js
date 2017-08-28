@@ -1,18 +1,12 @@
 'use strict';
-var psList = require('ps-list');
+const psList = require('ps-list');
 
-module.exports = function (proc) {
-	var fn = function (x) {
-		return x.pid === proc;
-	};
+module.exports = proc => {
+	let fn = x => x.pid === proc;
 
 	if (typeof proc === 'string') {
-		fn = function (x) {
-			return x.name === proc;
-		};
+		fn = x => x.name === proc;
 	}
 
-	return psList().then(function (list) {
-		return list.some(fn);
-	});
+	return psList().then(list => list.some(x => fn(x)));
 };
