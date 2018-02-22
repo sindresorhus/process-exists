@@ -15,3 +15,9 @@ test('title', async t => {
 	t.true(await m(title));
 	t.false(await m('pe-unicorn'));
 });
+
+test('multiple', async t => {
+	const title = 'pe-test';
+	await noopProcess({title});
+	t.deepEqual(await m.array([process.pid, title, 345234531, 'pe-unicorn']), [process.pid, title]);
+});

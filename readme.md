@@ -19,6 +19,11 @@ processExists(process.pid).then(exists => {
 	console.log(exists);
 	//=> true
 });
+
+processExists.array([process.pid, 'foo']).then(exists => {
+	console.log(exists);
+	//=> [51298]
+});
 ```
 
 
@@ -33,6 +38,16 @@ Returns a `Promise<boolean>`.
 Type: `number` `string`
 
 Process ID or name to check.
+
+### processExists.array(input)
+
+Returns a `Promise<Array>` with the processes that exists.
+
+#### input
+
+Type: `Array<number>` `Array<string>`
+
+Process IDs or names to check.
 
 
 ## License

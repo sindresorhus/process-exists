@@ -1,12 +1,13 @@
 'use strict';
 const psList = require('ps-list');
 
-module.exports = proc => {
-	let fn = x => x.pid === proc;
-
+const fn = (proc, x) => {
 	if (typeof proc === 'string') {
-		fn = x => x.name === proc;
+		return x.name === proc;
 	}
 
-	return psList().then(list => list.some(x => fn(x)));
+	return x.pid === proc;
 };
+
+module.exports = proc => psList().then(list => list.some(x => fn(proc, x)));
+module.exports.array = procs => psList().then(list => procs.filter(x => list.some(y => fn(x, y))));
