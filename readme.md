@@ -20,9 +20,11 @@ processExists(process.pid).then(exists => {
 	//=> true
 });
 
-processExists.array([process.pid, 'foo']).then(exists => {
-	console.log(exists);
-	//=> [51298]
+processExists.all([process.pid, 'foo']).then(exists => {
+	console.log(exists.get(process.pid));
+	//=> true
+	console.log(exists.get('foo'));
+	//=> false
 });
 ```
 
@@ -39,9 +41,9 @@ Type: `number` `string`
 
 Process ID or name to check.
 
-### processExists.array(input)
+### processExists.all(input)
 
-Returns a `Promise<Array>` with the processes that exists.
+Returns a `Promise<Map>` with the processes that exists.
 
 #### input
 
