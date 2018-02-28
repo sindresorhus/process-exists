@@ -15,3 +15,15 @@ test('title', async t => {
 	t.true(await m(title));
 	t.false(await m('pe-unicorn'));
 });
+
+test('multiple', async t => {
+	const title = 'pe-test';
+	await noopProcess({title});
+
+	t.deepEqual(await m.all([process.pid, title, 345234531, 'pe-unicorn']), new Map([
+		[process.pid, true],
+		[title, true],
+		[345234531, false],
+		['pe-unicorn', false]
+	]));
+});
