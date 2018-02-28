@@ -43,11 +43,11 @@ Process ID or name to check.
 
 ### processExists.all(input)
 
-Returns a `Promise<Map>` with the processes that exists.
+Returns a `Promise<Map>` with the process name/ID as key and the status as a boolean value.
 
 #### input
 
-Type: `Array<number>` `Array<string>`
+Type: `Array<number|string>`
 
 Process IDs or names to check.
 
