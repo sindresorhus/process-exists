@@ -11,4 +11,4 @@ const fn = (proc, x) => {
 
 module.exports = proc => psList().then(list => list.some(x => fn(proc, x)));
 module.exports.all = procs => psList().then(list => new Map(procs.map(x => [x, list.some(y => fn(x, y))])));
-module.exports.filterExists = procs => Array.from(procs.keys()).filter(x => procs.get(x));
+module.exports.filterExists = procs => psList().then(list => procs.filter(x => list.some(y => fn(x, y))));

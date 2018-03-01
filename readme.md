@@ -59,9 +59,9 @@ Returns an `Array<number|string>` with the processes that exist.
 
 #### input
 
-Type: `Map`
+Type: `Array<number|string>`
 
-A `Map` with the process name/ID as key and the status as a boolean value as returned from the `.all()` method.
+Process IDs or names to check.
 
 
 ## License
