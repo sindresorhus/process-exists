@@ -25,6 +25,8 @@ processExists.all([process.pid, 'foo']).then(exists => {
 	//=> true
 	console.log(exists.get('foo'));
 	//=> false
+	console.log(processExists.filterExists(exists));
+	//=> [process.pid]
 });
 ```
 
@@ -44,6 +46,16 @@ Process ID or name to check.
 ### processExists.all(input)
 
 Returns a `Promise<Map>` with the process name/ID as key and the status as a boolean value.
+
+#### input
+
+Type: `Array<number|string>`
+
+Process IDs or names to check.
+
+### processExists.filterExists(input)
+
+Returns an `Array<number|string>` with the processes that exist.
 
 #### input
 

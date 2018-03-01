@@ -27,3 +27,9 @@ test('multiple', async t => {
 		['pe-unicorn', false]
 	]));
 });
+
+test('filter', async t => {
+	const title = 'pe-test';
+	await noopProcess({title});
+	t.deepEqual(await m.filterExists([process.pid, title, 345234531, 'pe-unicorn']), [process.pid, title]);
+});
