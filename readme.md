@@ -55,7 +55,7 @@ Process IDs or names to check.
 
 ### processExists.filterExists(input)
 
-Returns an `Array<number|string>` with the existing processes.
+Returns an `Array<number|string>` with the processes that exist.
 
 #### input
 
