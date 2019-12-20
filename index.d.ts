@@ -13,7 +13,9 @@ declare const processExists: {
 	@param input - Process IDs or names to check.
 	@returns - A map, with the process name/ID as key and the status as a boolean value.
 	*/
-	all(input: (number | string)[]): Promise<Map<number | string, boolean>>;
+	all(
+		input: readonly (number | string)[],
+	): Promise<Map<number | string, boolean>>;
 
 	/**
 	Filter for processes that exist.
@@ -21,7 +23,7 @@ declare const processExists: {
 	@param input - Process IDs or names to check.
 	@returns - The processes that exist.
 	*/
-	filterExists(input: (number | string)[]): (number | string)[];
+	filterExists(input: readonly (number | string)[]): (number | string)[];
 };
 
 export = processExists;
