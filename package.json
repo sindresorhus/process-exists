@@ -4,13 +4,14 @@
 	"description": "Check if a process is running",
 	"license": "MIT",
 	"repository": "sindresorhus/process-exists",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
 		"url": "sindresorhus.com"
 	},
 	"engines": {
-		"node": ">=4"
+		"node": ">=10"
 	},
 	"scripts": {
 		"test": "xo && ava && tsd"
@@ -32,12 +33,12 @@
 		"check"
 	],
 	"dependencies": {
-		"ps-list": "^4.0.0"
+		"ps-list": "^6.3.0"
 	},
 	"devDependencies": {
-		"ava": "*",
-		"noop-process": "^3.0.0",
+		"ava": "^2.4.0",
+		"noop-process": "^4.0.0",
 		"tsd": "^0.11.0",
-		"xo": "*"
+		"xo": "^0.25.0"
 	}
 }

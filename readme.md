@@ -2,34 +2,33 @@
 
 > Check if a process is running
 
-
 ## Install
 
 ```
 $ npm install process-exists
 ```
 
-
 ## Usage
 
 ```js
 const processExists = require('process-exists');
 
-processExists(process.pid).then(exists => {
-	console.log(exists);
+(async () => {
+	console.log(await processExists(process.pid));
 	//=> true
-});
 
-processExists.all([process.pid, 'foo']).then(exists => {
+	const exists = await processExists.all([process.pid, 'foo']);
+
 	console.log(exists.get(process.pid));
 	//=> true
+
 	console.log(exists.get('foo'));
 	//=> false
+
 	console.log(processExists.filterExists(exists));
 	//=> [process.pid]
-});
+})();
 ```
-
 
 ## API
 
@@ -39,7 +38,7 @@ Returns a `Promise<boolean>`.
 
 #### input
 
-Type: `number` `string`
+Type: `number | string`
 
 Process ID or name to check.
 
@@ -49,21 +48,16 @@ Returns a `Promise<Map>` with the process name/ID as key and the status as a boo
 
 #### input
 
-Type: `Array<number|string>`
+Type: `Array<number | string>`
 
 Process IDs or names to check.
 
 ### processExists.filterExists(input)
 
-Returns an `Array<number|string>` with the processes that exist.
+Returns an `Array<number | string>` with the processes that exist.
 
 #### input
 
-Type: `Array<number|string>`
+Type: `Array<number | string>`
 
 Process IDs or names to check.
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

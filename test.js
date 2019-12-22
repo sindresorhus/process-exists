@@ -1,10 +1,10 @@
 import test from 'ava';
 import noopProcess from 'noop-process';
-import m from '.';
+import processExists from '.';
 
 test('pid', async t => {
-	t.true(await m(process.pid));
-	t.false(await m(345234531));
+	t.true(await processExists(process.pid));
+	t.false(await processExists(345234531));
 });
 
 test('title', async t => {
@@ -12,15 +12,15 @@ test('title', async t => {
 
 	await noopProcess({title});
 
-	t.true(await m(title));
-	t.false(await m('pe-unicorn'));
+	t.true(await processExists(title));
+	t.false(await processExists('pe-unicorn'));
 });
 
 test('multiple', async t => {
 	const title = 'pe-test';
 	await noopProcess({title});
 
-	t.deepEqual(await m.all([process.pid, title, 345234531, 'pe-unicorn']), new Map([
+	t.deepEqual(await processExists.all([process.pid, title, 345234531, 'pe-unicorn']), new Map([
 		[process.pid, true],
 		[title, true],
 		[345234531, false],
@@ -31,5 +31,5 @@ test('multiple', async t => {
 test('filter', async t => {
 	const title = 'pe-test';
 	await noopProcess({title});
-	t.deepEqual(await m.filterExists([process.pid, title, 345234531, 'pe-unicorn']), [process.pid, title]);
+	t.deepEqual(await processExists.filterExists([process.pid, title, 345234531, 'pe-unicorn']), [process.pid, title]);
 });

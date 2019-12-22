@@ -1,14 +1,25 @@
 'use strict';
 const psList = require('ps-list');
 
-const fn = (proc, x) => {
-	if (typeof proc === 'string') {
-		return x.name === proc;
+const fn = (wantedProcessName, process) => {
+	if (typeof wantedProcessName === 'string') {
+		return process.name === wantedProcessName;
 	}
 
-	return x.pid === proc;
+	return process.pid === wantedProcessName;
 };
 
-module.exports = proc => psList().then(list => list.some(x => fn(proc, x)));
-module.exports.all = procs => psList().then(list => new Map(procs.map(x => [x, list.some(y => fn(x, y))])));
-module.exports.filterExists = procs => psList().then(list => procs.filter(x => list.some(y => fn(x, y))));
+module.exports = async processName => {
+	const processes = await psList();
+	return processes.some(x => fn(processName, x));
+};
+
+module.exports.all = async processName => {
+	const processes = await psList();
+	return new Map(processName.map(x => [x, processes.some(y => fn(x, y))]));
+};
+
+module.exports.filterExists = async processNames => {
+	const processes = await psList();
+	return processNames.filter(x => processes.some(y => fn(x, y)));
+};
