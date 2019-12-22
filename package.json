@@ -13,10 +13,11 @@
 		"node": ">=4"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava && tsd"
 	},
 	"files": [
-		"index.js"
+		"index.js",
+		"index.d.ts"
 	],
 	"keywords": [
 		"process",
@@ -36,6 +37,7 @@
 	"devDependencies": {
 		"ava": "*",
 		"noop-process": "^3.0.0",
+		"tsd": "^0.11.0",
 		"xo": "*"
 	}
 }
