@@ -33,7 +33,7 @@
 		"check"
 	],
 	"dependencies": {
-		"ps-list": "^6.3.0"
+		"ps-list": "^7.2.0"
 	},
 	"devDependencies": {
 		"ava": "^2.4.0",
