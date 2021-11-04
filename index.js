@@ -1,5 +1,5 @@
-'use strict';
-const psList = require('ps-list');
+import process from 'node:process';
+import psList from 'ps-list';
 
 const linuxProcessMatchesName = (wantedProcessName, process) => {
 	if (typeof wantedProcessName === 'string') {
@@ -19,17 +19,17 @@ const nonLinuxProcessMatchesName = (wantedProcessName, process) => {
 
 const processMatchesName = process.platform === 'linux' ? linuxProcessMatchesName : nonLinuxProcessMatchesName;
 
-module.exports = async processName => {
+export async function processExists(processName) {
 	const processes = await psList();
-	return processes.some(x => processMatchesName(processName, x));
-};
+	return processes.some(process_ => processMatchesName(processName, process_));
+}
 
-module.exports.all = async processName => {
+export async function processExistsMultiple(processNames) {
 	const processes = await psList();
-	return new Map(processName.map(x => [x, processes.some(y => processMatchesName(x, y))]));
-};
+	return new Map(processNames.map(processName => [processName, processes.some(y => processMatchesName(processName, y))]));
+}
 
-module.exports.filterExists = async processNames => {
+export async function filterExistingProcesses(processNames) {
 	const processes = await psList();
-	return processNames.filter(x => processes.some(y => processMatchesName(x, y)));
-};
+	return processNames.filter(processName => processes.some(process_ => processMatchesName(processName, process_)));
+}

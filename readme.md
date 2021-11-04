@@ -4,35 +4,35 @@
 
 ## Install
 
-```
-$ npm install process-exists
+```sh
+npm install process-exists
 ```
 
 ## Usage
 
 ```js
-const processExists = require('process-exists');
+import {processExists, processExistsMultiple, filterExistingProcesses} from 'process-exists';
 
-(async () => {
-	console.log(await processExists(process.pid));
-	//=> true
+console.log(await processExists(process.pid));
+//=> true
 
-	const exists = await processExists.all([process.pid, 'foo']);
+const exists = await processExistsMultiple([process.pid, 'foo']);
 
-	console.log(exists.get(process.pid));
-	//=> true
+console.log(exists.get(process.pid));
+//=> true
 
-	console.log(exists.get('foo'));
-	//=> false
+console.log(exists.get('foo'));
+//=> false
 
-	console.log(processExists.filterExists(exists));
-	//=> [process.pid]
-})();
+console.log(filterExistingProcesses(exists));
+//=> [process.pid]
 ```
 
 ## API
 
 ### processExists(input)
+
+Check if a process exists.
 
 Returns a `Promise<boolean>`.
 
@@ -40,9 +40,11 @@ Returns a `Promise<boolean>`.
 
 Type: `number | string`
 
-Process ID or name to check.
+The process ID or name to check.
 
-### processExists.all(input)
+### processExistsMultiple(input)
+
+Check multiple processes if they exist.
 
 Returns a `Promise<Map>` with the process name/ID as key and the status as a boolean value.
 
@@ -50,9 +52,11 @@ Returns a `Promise<Map>` with the process name/ID as key and the status as a boo
 
 Type: `Array<number | string>`
 
-Process IDs or names to check.
+The process IDs or names to check.
 
-### processExists.filterExists(input)
+### filterExistingProcesses(input)
+
+Filter processes that exist.
 
 Returns an `Array<number | string>` with the processes that exist.
 
@@ -60,4 +64,4 @@ Returns an `Array<number | string>` with the processes that exist.
 
 Type: `Array<number | string>`
 
-Process IDs or names to check.
+The process IDs or names to check.

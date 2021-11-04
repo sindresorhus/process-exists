@@ -1,10 +1,11 @@
+import process from 'node:process';
 import test from 'ava';
 import noopProcess from 'noop-process';
-import processExists from '.';
+import {processExists, processExistsMultiple, filterExistingProcesses} from './index.js';
 
 test('pid', async t => {
 	t.true(await processExists(process.pid));
-	t.false(await processExists(345234531));
+	t.false(await processExists(345_234_531));
 });
 
 test('title', async t => {
@@ -20,16 +21,16 @@ test('multiple', async t => {
 	const title = 'pe-test';
 	await noopProcess({title});
 
-	t.deepEqual(await processExists.all([process.pid, title, 345234531, 'pe-unicorn']), new Map([
+	t.deepEqual(await processExistsMultiple([process.pid, title, 345_234_531, 'pe-unicorn']), new Map([
 		[process.pid, true],
 		[title, true],
-		[345234531, false],
-		['pe-unicorn', false]
+		[345_234_531, false],
+		['pe-unicorn', false],
 	]));
 });
 
 test('filter', async t => {
 	const title = 'pe-test';
 	await noopProcess({title});
-	t.deepEqual(await processExists.filterExists([process.pid, title, 345234531, 'pe-unicorn']), [process.pid, title]);
+	t.deepEqual(await filterExistingProcesses([process.pid, title, 345_234_531, 'pe-unicorn']), [process.pid, title]);
 });

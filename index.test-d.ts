@@ -1,11 +1,12 @@
 import {expectType} from 'tsd';
-import processExists = require('.');
+import {processExists, processExistsMultiple, filterExistingProcesses} from './index.js';
 
 expectType<Promise<boolean>>(processExists(123));
 expectType<Promise<boolean>>(processExists('abc'));
 
 expectType<Promise<Map<number | string, boolean>>>(
-	processExists.all(['abc', 123])
+	processExistsMultiple(['abc', 123]),
 );
 
-expectType<(number | string)[]>(processExists.filterExists(['abc', 123]));
+expectType<string[]>(filterExistingProcesses(['abc', 'foo']));
+expectType<Array<number | string>>(filterExistingProcesses(['abc', 123]));
